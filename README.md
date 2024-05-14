@@ -97,7 +97,7 @@ client = MongoClient('mongodb://localhost:27017/')
 print(client)
 ```
 
-> Now if you run the code, output will be like,
+> Now if you run the code, the output will be like this,
 > ```python
 > >>> MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True)
 > ```
@@ -107,15 +107,15 @@ print(client)
 
 ## Accessing Database and Collection
 
-The way to **Creating** and **Opening** existing _Database_ and _Collection_ are same. If the given database or collection name matched with an existing one then it will open it. Otherwise it will create a new database with the same name.  
+The way to **Creating** and **Opening** existing _Database_ and _Collection_ are the same. If the given database or collection name matches with an existing one then it will open it. Otherwise, it will create a new database with the same name.  
 
-But still there are slightly difference.  
+But still, there are slight differences.  
 
-If you are creating a new database or collection then _you have to insert a document into them_. Otherwise database or collection wil not create.
+If you are creating a new database or collection then _you have to insert a document into them_. Otherwise, a database or collection will not be created.
 
 **Database**
 ```python
-# for opening or creating database
+# for opening or creating a database
 db = client['test-database']
 ```
 
@@ -132,7 +132,7 @@ collection = db['test-collection']
 Now you have to insert a document into the collection if you are creating a new one as mentioned before,
 
 ```python
-# first arrange the values into a dictionary
+# First arrange the values in a dictionary
 my_dict = {"name": "HONEY", "language": "Python", "Platform": "GitHub"}
 ```
 Here I am using `insert_one` function to insert the values. Another function to insert the value I will explain in next step.
@@ -148,13 +148,13 @@ collection.insert_one(my_dict)  # Using "insert_one" function
 
 
 
-Now we will learn how to insert a document in to collection of any database. PyMongo have two methods to insert document:  
+Now we will learn how to insert a document into a collection of any database. PyMongo has two methods to insert documents:  
 - `insert_one` (_for inserting only one document_)  
 - `insert_many` (_for inserting multiple documents at once_)  
 
 1. **Insert One**   
 
-    First we need to arrange the values into a dictionary; for example:
+    First, we need to arrange the values into a dictionary; for example:
     ```python
     # our sample dictionary
     my_dict = {"name": "HONEY", "language": "Python", "Platform": "GitHub"}
@@ -199,7 +199,7 @@ Now we can just insert it into the collection as mentioned earlier.
 
 ## Find Document In Database
 
-PyMongo have function called `find_one()` to find any document in the database. `find_one()` returns only **one** document. It doesn't have any function to find multiple documents at the same time. You have to use **for loop** for it.  
+PyMongo has a function called `find_one()` to find any document in the database. `find_one()` returns only **one** document. It doesn't have any function to find multiple documents at the same time. You have to use **for loop** for it.  
 
 
 1. **Finding random document**
@@ -215,7 +215,7 @@ PyMongo have function called `find_one()` to find any document in the database. 
     print(doc)
     ```
 
-3. **Counting the no. of documents of matching the filter**
+3. **Counting the no. of documents matching the filter**
     ```python
     _filter = {"language": "Python"}
     # counting the number of document/s of matching the filter
@@ -227,11 +227,11 @@ PyMongo have function called `find_one()` to find any document in the database. 
 
 ## Getting Specific Data
 
-When we import data from database then we may want to get only required data, not all data from documents. For that we have to show only required data and have to hind other things. We can do this by using PyMongo.  
+When we import data from a database then we may want to get only the required data, not all data from documents. For that, we have to show only the required data and have to hide other things. We can do this by using PyMongo.  
 
-If we want to hind some Key's value, then we can do this just by adding a second argument contains keys in a dictionary.
+If we want to hide some Key's value, then we can do this just by adding a second argument containing keys in a dictionary.
 
-There, key's value will be `0` or `1`  
+There, the key's value will be `0` or `1`  
 `0` 👉 it not will print  
 `1` 👉 it will print  
 
@@ -256,20 +256,19 @@ one = collection.find_one(_filter, {'name':1})
 # NOTE: here only '_id' & 'name' key will show
 
 two = collection.find_one(_filter, {'name':1, '_id':0})
-# here only 'name' will show
+# Here only 'name' will show
 
 print(one)
 print(two)
 ```
 
-From the above example we can see that we have to make `_id` key 0. Because it doesn't become `0` by default.
-
+From the above example, we can see that we have to make `_id` key 0. Because it doesn't become `0` by default.
 
 
 
 ## Showing Databases and Collections
 
-Anytime we may need to check the list of created databases and collections. Luckily, PyMongo have functionality to do it.  
+Anytime we may need to check the list of created databases and collections. Luckily, PyMongo has the functionality to do it.  
 
 1. **Databases**
     ```python
@@ -290,15 +289,16 @@ Anytime we may need to check the list of created databases and collections. Luck
     ```
 
 
+
 ## Updating Document
 
-When we are working with database then, we have to update documents with time. Here we can do that using PyMongo.
+When we are working with a database then, we have to update documents with time. Here we can do that using PyMongo.
 
-_Pymongo have functions that updates document,_  
-1. `update_one()`,
-2. `update_many()`
+_Pymongo have functions that update documents,_  
+- `update_one()`,
+- `update_many()`
 
-> Here also we have to arrange updated values into dictionary. But here you have to put this dictionary into another dictionary of key `"$set"`. Like: `{"$set": {"key": "updated value"}}`  
+> Here also we have to arrange updated values into a dictionary. But here you have to put this dictionary into another dictionary of key `"$set"`. Like: `{"$set": {"key": "updated value"}}`  
 
 1. **Update One**
 
@@ -333,11 +333,9 @@ _Pymongo have functions that updates document,_
 
 ## Deleting Document
 
-For deleting document also there are two functions:  
-1. `delete_one()` -----> for deleting one document
-2. `delete_many()` ----> for deleting multiple documents
-
-Again, first connect to client and then,
+For deleting documents also there are two functions:  
+- `delete_one()` 👉 for deleting one document
+- `delete_many()` 👉 for deleting multiple documents
 
 1. **Delete One**
     ```python
@@ -353,7 +351,7 @@ Again, first connect to client and then,
     dle = collection.delete_many(filter_2)  # deleting
     ```
 
-    For counting number of documents deleted
+    For counting the number of documents deleted
     ```python
     print(dle.deleted_count)
     ```
